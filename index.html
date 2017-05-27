@@ -73,7 +73,10 @@
   }
 
   function bonk(e) {
-    console.log(e);
+    if (!e.isTrusted) return;   // prevent cheater from faking a click
+    score++;
+    this.classList.remove('up');
+    scoreBoard.textContent = score;
   }
 
   moles.forEach(mole => mole.addEventListener('click', bonk));
